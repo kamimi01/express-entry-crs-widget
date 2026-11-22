@@ -19,6 +19,230 @@ const SETTINGS = {
   PREVIEW_SIZE: "medium"
 };
 
+// CRS tables are fetched at startup; this snapshot is used if they are unavailable.
+const TABLES_URL = "https://raw.githubusercontent.com/kamimi01/express-entry-crs-widget/main/data/crs-tables.json";
+const EMBEDDED_TABLES = {
+  "coreHumanCapital": {
+    "age": {
+      "withoutSpouse": {
+        "17OrUnder": 0,
+        "18": 99,
+        "19": 105,
+        "20To29": 110,
+        "30": 105,
+        "31": 99,
+        "32": 94,
+        "33": 88,
+        "34": 83,
+        "35": 77,
+        "36": 72,
+        "37": 66,
+        "38": 61,
+        "39": 55,
+        "40": 50,
+        "41": 39,
+        "42": 28,
+        "43": 17,
+        "44": 6,
+        "45OrOver": 0
+      }
+    },
+    "education": {
+      "withoutSpouse": {
+        "lessThanSecondary": 0,
+        "secondaryDiploma": 30,
+        "oneYearPostsecondary": 90,
+        "twoYearPostsecondary": 98,
+        "bachelorsOrThreePlusYears": 120,
+        "twoOrMoreCredentialsOneThreePlusYears": 128,
+        "mastersOrEligibleProfessionalDegree": 135,
+        "doctoralDegree": 150
+      }
+    },
+    "firstLanguage": {
+      "withoutSpouse": {
+        "below4": 0,
+        "4To5": 6,
+        "6": 9,
+        "7": 17,
+        "8": 23,
+        "9": 31,
+        "10Plus": 34
+      }
+    },
+    "canadianWorkExperience": {
+      "withoutSpouse": {
+        "lessThan1Year": 0,
+        "1Year": 40,
+        "2Years": 53,
+        "3Years": 64,
+        "4Years": 72,
+        "5PlusYears": 80
+      }
+    }
+  },
+  "skillTransferability": {
+    "groupCaps": {
+      "educationRelatedCombined": 50,
+      "foreignWorkRelatedCombined": 50,
+      "certificateOfQualification": 50,
+      "sectionTotal": 100
+    },
+    "educationPlusLanguage": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "clb7AllSomeBelow9",
+        "clb9All"
+      ],
+      "pointsByEducationLevel": {
+        "secondaryOrLess": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 0,
+          "clb9All": 0
+        },
+        "postsecondaryOneYearOrLonger": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 13,
+          "clb9All": 25
+        },
+        "twoOrMoreCredentialsOneThreePlusYears": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        },
+        "mastersOrEligibleProfessionalDegree": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        },
+        "doctoralDegree": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        }
+      }
+    },
+    "educationPlusCanadianWork": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "1Year",
+        "2PlusYears"
+      ],
+      "pointsByEducationLevel": {
+        "secondaryOrLess": {
+          "notQualified": 0,
+          "1Year": 0,
+          "2PlusYears": 0
+        },
+        "postsecondaryOneYearOrLonger": {
+          "notQualified": 0,
+          "1Year": 13,
+          "2PlusYears": 25
+        },
+        "twoOrMoreCredentialsOneThreePlusYears": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        },
+        "mastersOrEligibleProfessionalDegree": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        },
+        "doctoralDegree": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        }
+      }
+    },
+    "foreignWorkPlusLanguage": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "clb7AllSomeBelow9",
+        "clb9All"
+      ],
+      "pointsByForeignWorkYears": {
+        "none": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 0,
+          "clb9All": 0
+        },
+        "1To2Years": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 13,
+          "clb9All": 25
+        },
+        "3PlusYears": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        }
+      }
+    },
+    "foreignWorkPlusCanadianWork": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "1Year",
+        "2PlusYears"
+      ],
+      "pointsByForeignWorkYears": {
+        "none": {
+          "notQualified": 0,
+          "1Year": 0,
+          "2PlusYears": 0
+        },
+        "1To2Years": {
+          "notQualified": 0,
+          "1Year": 13,
+          "2PlusYears": 25
+        },
+        "3PlusYears": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        }
+      }
+    }
+  },
+  "additionalPoints": {
+    "maximum": 600,
+    "provincialNomination": {
+      "validAndAccepted": 600,
+      "none": 0
+    }
+  }
+};
+let crsTables = EMBEDDED_TABLES;
+
+// Require every numeric value used by this script before accepting remote tables.
+function validTableValues(actual, expected) {
+  if (typeof expected === "number") {
+    return typeof actual === "number" && Number.isFinite(actual);
+  }
+  if (expected && typeof expected === "object" && !Array.isArray(expected)) {
+    return actual && typeof actual === "object" && !Array.isArray(actual) &&
+      Object.keys(expected).every(key => validTableValues(actual[key], expected[key]));
+  }
+  return true;
+}
+
+async function loadCrsTables() {
+  try {
+    const request = new Request(TABLES_URL);
+    request.timeoutInterval = SETTINGS.TIMEOUT_SECONDS;
+    const tables = await request.loadJSON();
+    if ((request.response && request.response.statusCode >= 400) ||
+        !validTableValues(tables, EMBEDDED_TABLES)) {
+      throw new Error("Invalid CRS tables");
+    }
+    return tables;
+  } catch (error) {
+    console.warn(`CRS tables unavailable; using embedded tables: ${String(error)}`);
+    return EMBEDDED_TABLES;
+  }
+}
+
 // Fixed widths for consistent alignment.
 const LAYOUT = {
   LEFT_WIDTH: 181,
@@ -278,50 +502,37 @@ async function fetchDraws() {
 // Additional points must be verified separately.
 
 function agePoints(age) {
-  if (age < 18 || age >= 45) return 0;
-  if (age === 18) return 99;
-  if (age === 19) return 105;
-  if (age <= 29) return 110;
-
-  return [
-    105, 99, 94, 88, 83,
-    77, 72, 66, 61, 55,
-    50, 39, 28, 17, 6
-  ][age - 30] || 0;
+  const key = age < 18 ? "17OrUnder" : age >= 45 ? "45OrOver" :
+    age >= 20 && age <= 29 ? "20To29" : String(age);
+  return crsTables.coreHumanCapital.age.withoutSpouse[key] || 0;
 }
 
 function educationPoints(level) {
-  return {
-    none: 0,
-    high_school: 30,
-    one_year: 90,
-    two_year: 98,
-    bachelor: 120,
-    two_or_more: 128,
-    masters: 135,
-    phd: 150
-  }[level] || 0;
+  const key = {
+    none: "lessThanSecondary",
+    high_school: "secondaryDiploma",
+    one_year: "oneYearPostsecondary",
+    two_year: "twoYearPostsecondary",
+    bachelor: "bachelorsOrThreePlusYears",
+    two_or_more: "twoOrMoreCredentialsOneThreePlusYears",
+    masters: "mastersOrEligibleProfessionalDegree",
+    phd: "doctoralDegree"
+  }[level];
+  return crsTables.coreHumanCapital.education.withoutSpouse[key] || 0;
 }
 
 function languagePoints(clb) {
-  if (clb < 4) return 0;
-  if (clb <= 5) return 6;
-  if (clb === 6) return 9;
-  if (clb === 7) return 17;
-  if (clb === 8) return 23;
-  if (clb === 9) return 31;
-
-  return 34;
+  const key = clb < 4 ? "below4" : clb <= 5 ? "4To5" :
+    clb === 6 ? "6" : clb === 7 ? "7" : clb === 8 ? "8" :
+    clb === 9 ? "9" : "10Plus";
+  return crsTables.coreHumanCapital.firstLanguage.withoutSpouse[key];
 }
 
 function canadianWorkPoints(years) {
-  if (years < 1) return 0;
-  if (years < 2) return 40;
-  if (years < 3) return 53;
-  if (years < 4) return 64;
-  if (years < 5) return 72;
-
-  return 80;
+  const key = years < 1 ? "lessThan1Year" : years < 2 ? "1Year" :
+    years < 3 ? "2Years" : years < 4 ? "3Years" :
+    years < 5 ? "4Years" : "5PlusYears";
+  return crsTables.coreHumanCapital.canadianWorkExperience.withoutSpouse[key];
 }
 
 function crsFrom(p) {
@@ -339,66 +550,29 @@ function crsFrom(p) {
   const foreign = Number(p.FOREIGN_WORK_YEARS);
   const edu = p.EDUCATION;
 
-  const twoDegrees = [
-    "two_or_more",
-    "masters",
-    "phd"
-  ].includes(edu);
+  const t = crsTables.skillTransferability;
+  const educationTier = {
+    none: "secondaryOrLess",
+    high_school: "secondaryOrLess",
+    one_year: "postsecondaryOneYearOrLonger",
+    two_year: "postsecondaryOneYearOrLonger",
+    bachelor: "postsecondaryOneYearOrLonger",
+    two_or_more: "twoOrMoreCredentialsOneThreePlusYears",
+    masters: "mastersOrEligibleProfessionalDegree",
+    phd: "doctoralDegree"
+  }[edu] || "secondaryOrLess";
+  const languageTier = all9 ? "clb9All" : all7 ? "clb7AllSomeBelow9" : "notQualified";
+  const workTier = work >= 2 ? "2PlusYears" : work >= 1 ? "1Year" : "notQualified";
+  const foreignTier = foreign >= 3 ? "3PlusYears" : foreign >= 1 ? "1To2Years" : "none";
 
-  const postSecondary =
-    twoDegrees ||
-    [
-      "one_year",
-      "two_year",
-      "bachelor"
-    ].includes(edu);
+  const eduLanguage = t.educationPlusLanguage.pointsByEducationLevel[educationTier][languageTier];
+  const eduWork = t.educationPlusCanadianWork.pointsByEducationLevel[educationTier][workTier];
+  const eduTransfer = Math.min(t.groupCaps.educationRelatedCombined, eduLanguage + eduWork);
 
-  // Education + language
-  const eduLanguage = !postSecondary
-    ? 0
-    : all9
-      ? (twoDegrees ? 50 : 25)
-      : all7
-        ? (twoDegrees ? 25 : 13)
-        : 0;
-
-  // Education + Canadian work
-  const eduWork = !postSecondary
-    ? 0
-    : work >= 2
-      ? (twoDegrees ? 50 : 25)
-      : work >= 1
-        ? (twoDegrees ? 25 : 13)
-        : 0;
-
-  const eduTransfer = Math.min(
-    50,
-    eduLanguage + eduWork
-  );
-
-  // Foreign work + language
-  const foreignLanguage = foreign >= 3
-    ? (all9 ? 50 : all7 ? 25 : 0)
-    : foreign >= 1
-      ? (all9 ? 25 : all7 ? 13 : 0)
-      : 0;
-
-  // Foreign work + Canadian work
-  const foreignWork = foreign >= 3
-    ? (work >= 2 ? 50 : work >= 1 ? 25 : 0)
-    : foreign >= 1
-      ? (work >= 2 ? 25 : work >= 1 ? 13 : 0)
-      : 0;
-
-  const foreignTransfer = Math.min(
-    50,
-    foreignLanguage + foreignWork
-  );
-
-  const transfer = Math.min(
-    100,
-    eduTransfer + foreignTransfer
-  );
+  const foreignLanguage = t.foreignWorkPlusLanguage.pointsByForeignWorkYears[foreignTier][languageTier];
+  const foreignWork = t.foreignWorkPlusCanadianWork.pointsByForeignWorkYears[foreignTier][workTier];
+  const foreignTransfer = Math.min(t.groupCaps.foreignWorkRelatedCombined, foreignLanguage + foreignWork);
+  const transfer = Math.min(t.groupCaps.sectionTotal, eduTransfer + foreignTransfer);
 
   // Canadian work points + verified high-wage bonus,
   // OR verified job-offer points.
@@ -424,7 +598,7 @@ function crsFrom(p) {
     labour +
     transfer +
     Math.min(
-      600,
+      crsTables.additionalPoints.maximum,
       Number(p.CANADIAN_EDUCATION_POINTS) +
         Number(p.OTHER_ADDITIONAL_POINTS)
     )
@@ -495,7 +669,8 @@ function personalStatus() {
   // The additional-points cap prevents an existing nomination being counted twice.
   const nomination = {
     ...baseline,
-    OTHER_ADDITIONAL_POINTS: Number(MY.OTHER_ADDITIONAL_POINTS) + 600
+    OTHER_ADDITIONAL_POINTS: Number(MY.OTHER_ADDITIONAL_POINTS) +
+      crsTables.additionalPoints.provincialNomination.validAndAccepted
   };
 
   return {
@@ -1251,6 +1426,8 @@ function errorWidget(isSmall) {
 // ===============================================
 
 async function main() {
+  crsTables = await loadCrsTables();
+
   const family = config.runsInWidget
     ? config.widgetFamily
     : SETTINGS.PREVIEW_SIZE;
