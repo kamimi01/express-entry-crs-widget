@@ -6,7 +6,7 @@
 2. Review the estimated CRS calculation.
 3. Use the generated script in a Scriptable widget.
 
-Attach `data/crs-tables.json` and `script/crs-widget.js` to the AI conversation, or supply accessible raw URLs.
+The prompt links directly to `data/crs-tables.json`. If the AI cannot access the link, attach the JSON. Attach `script/crs-widget.js` or provide an accessible raw URL if needed for fallback logic.
 
 The prompt directs the AI to:
 
@@ -14,7 +14,7 @@ The prompt directs the AI to:
 - Check official IRCC sources.
 - Use applicable reference-script logic only as a limited fallback.
 
-A generated script should use an accessible table URL when supplied and keep an embedded offline fallback.
+A generated script should use the linked table URL and keep an embedded offline fallback based on tables the AI has actually read.
 
 ## Reference script
 
