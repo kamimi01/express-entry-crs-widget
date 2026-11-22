@@ -1,0 +1,776 @@
+{
+  "metadata": {
+    "version": "2026.11-1",
+    "effectiveDate": "2026-11-03",
+    "verifiedOn": "2026-11-21",
+    "jurisdiction": "Canada",
+    "program": "Express Entry Comprehensive Ranking System (CRS)",
+    "pointUnit": "CRS points",
+    "sources": [
+      "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html",
+      "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/changes.html",
+      "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html",
+      "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-test.html",
+      "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html"
+    ],
+    "notes": [
+      "Values are CRS ranking points, not the separate eligibility-selection points for Federal Skilled Worker or Canadian Experience Class.",
+      "withSpouse applies only if a spouse or common-law partner accompanies the principal applicant; withoutSpouse applies if there is no accompanying spouse or the partner is already a Canadian citizen or permanent resident.",
+      "Work experience and high-wage occupation points under Labour Market Integration took effect November 3, 2026.",
+      "An eligibility determination, NOC assessment, language test validity and educational credential equivalency are separate from numeric CRS table lookups."
+    ]
+  },
+  "maximumPoints": {
+    "total": 1270,
+    "coreHumanCapital": {
+      "withSpouse": 530,
+      "withoutSpouse": 570
+    },
+    "spouseFactors": {
+      "withSpouse": 40,
+      "withoutSpouse": 0
+    },
+    "skillTransferability": 100,
+    "additionalPoints": 600
+  },
+  "coreHumanCapital": {
+    "officialLanguagesMaximum": {
+      "withSpouse": 150,
+      "withoutSpouse": 160
+    },
+    "age": {
+      "maximum": {
+        "withSpouse": 100,
+        "withoutSpouse": 110
+      },
+      "withSpouse": {
+        "17OrUnder": 0,
+        "18": 90,
+        "19": 95,
+        "20To29": 100,
+        "30": 95,
+        "31": 90,
+        "32": 85,
+        "33": 80,
+        "34": 75,
+        "35": 70,
+        "36": 65,
+        "37": 60,
+        "38": 55,
+        "39": 50,
+        "40": 45,
+        "41": 35,
+        "42": 25,
+        "43": 15,
+        "44": 5,
+        "45OrOver": 0
+      },
+      "withoutSpouse": {
+        "17OrUnder": 0,
+        "18": 99,
+        "19": 105,
+        "20To29": 110,
+        "30": 105,
+        "31": 99,
+        "32": 94,
+        "33": 88,
+        "34": 83,
+        "35": 77,
+        "36": 72,
+        "37": 66,
+        "38": 61,
+        "39": 55,
+        "40": 50,
+        "41": 39,
+        "42": 28,
+        "43": 17,
+        "44": 6,
+        "45OrOver": 0
+      }
+    },
+    "education": {
+      "maximum": {
+        "withSpouse": 140,
+        "withoutSpouse": 150
+      },
+      "withSpouse": {
+        "lessThanSecondary": 0,
+        "secondaryDiploma": 28,
+        "oneYearPostsecondary": 84,
+        "twoYearPostsecondary": 91,
+        "bachelorsOrThreePlusYears": 112,
+        "twoOrMoreCredentialsOneThreePlusYears": 119,
+        "mastersOrEligibleProfessionalDegree": 126,
+        "doctoralDegree": 140
+      },
+      "withoutSpouse": {
+        "lessThanSecondary": 0,
+        "secondaryDiploma": 30,
+        "oneYearPostsecondary": 90,
+        "twoYearPostsecondary": 98,
+        "bachelorsOrThreePlusYears": 120,
+        "twoOrMoreCredentialsOneThreePlusYears": 128,
+        "mastersOrEligibleProfessionalDegree": 135,
+        "doctoralDegree": 150
+      }
+    },
+    "firstLanguage": {
+      "scoringBasis": "perAbility",
+      "abilities": [
+        "speaking",
+        "listening",
+        "reading",
+        "writing"
+      ],
+      "maximumPerAbility": {
+        "withSpouse": 32,
+        "withoutSpouse": 34
+      },
+      "maximumTotal": {
+        "withSpouse": 128,
+        "withoutSpouse": 136
+      },
+      "withSpouse": {
+        "below4": 0,
+        "4To5": 6,
+        "6": 8,
+        "7": 16,
+        "8": 22,
+        "9": 29,
+        "10Plus": 32
+      },
+      "withoutSpouse": {
+        "below4": 0,
+        "4To5": 6,
+        "6": 9,
+        "7": 17,
+        "8": 23,
+        "9": 31,
+        "10Plus": 34
+      }
+    },
+    "secondLanguage": {
+      "scoringBasis": "perAbility",
+      "abilities": [
+        "speaking",
+        "listening",
+        "reading",
+        "writing"
+      ],
+      "maximumPerAbility": {
+        "withSpouse": 6,
+        "withoutSpouse": 6
+      },
+      "maximumTotal": {
+        "withSpouse": 22,
+        "withoutSpouse": 24
+      },
+      "withSpouse": {
+        "4OrBelow": 0,
+        "5To6": 1,
+        "7To8": 3,
+        "9Plus": 6
+      },
+      "withoutSpouse": {
+        "4OrBelow": 0,
+        "5To6": 1,
+        "7To8": 3,
+        "9Plus": 6
+      },
+      "note": "Apply the maximumTotal cap after adding the four ability points."
+    },
+    "canadianWorkExperience": {
+      "scoringBasis": "qualifyingCanadianWorkExperienceDuration",
+      "lookbackYears": 10,
+      "maximum": {
+        "withSpouse": 70,
+        "withoutSpouse": 80
+      },
+      "withSpouse": {
+        "lessThan1Year": 0,
+        "1Year": 35,
+        "2Years": 46,
+        "3Years": 56,
+        "4Years": 63,
+        "5PlusYears": 70
+      },
+      "withoutSpouse": {
+        "lessThan1Year": 0,
+        "1Year": 40,
+        "2Years": 53,
+        "3Years": 64,
+        "4Years": 72,
+        "5PlusYears": 80
+      }
+    },
+    "labourMarketIntegration": {
+      "effectiveDate": "2026-11-03",
+      "scoringRule": "Take the greater of (qualifying Canadian work duration points + qualifying high-wage Canadian work experience points) OR qualifying high-wage job offer points; do not add both alternatives.",
+      "maximum": {
+        "withSpouse": 140,
+        "withoutSpouse": 150
+      },
+      "canadianWorkBranchMaximum": {
+        "withSpouse": 140,
+        "withoutSpouse": 150
+      },
+      "jobOfferBranchMaximum": {
+        "withSpouse": 100,
+        "withoutSpouse": 100
+      },
+      "highWageCanadianWorkExperience": {
+        "minimumQualifyingDurationMonths": 12,
+        "minimumQualifyingHours": 1560,
+        "lookbackYears": 10,
+        "maximum": {
+          "withSpouse": 70,
+          "withoutSpouse": 70
+        },
+        "withSpouse": {
+          "noneOrNotQualified": 0,
+          "level1_3x": 20,
+          "level1_5x": 40,
+          "level2_0x": 70
+        },
+        "withoutSpouse": {
+          "noneOrNotQualified": 0,
+          "level1_3x": 20,
+          "level1_5x": 40,
+          "level2_0x": 70
+        },
+        "rules": [
+          "Occupation level is based on the official list for the NOC, not on the individual worker salary.",
+          "Apply level2_0x if at least 12 qualifying months are in one or more level2_0x occupations.",
+          "Otherwise apply level1_5x if at least 12 qualifying months are in eligible level1_5x or level2_0x occupations combined.",
+          "Otherwise apply level1_3x if at least 12 qualifying months are in any eligible high-wage occupations combined.",
+          "Concurrent periods may be considered distinctly for identifying the applicable level; hours cannot be double-counted for work-duration points."
+        ]
+      },
+      "highWageJobOffer": {
+        "minimumOfferDurationMonthsAfterPRVisa": 12,
+        "minimumFullTimeHoursPerWeek": 30,
+        "maximum": {
+          "withSpouse": 100,
+          "withoutSpouse": 100
+        },
+        "withSpouse": {
+          "noneOrNotQualified": 0,
+          "level1_3x": 50,
+          "level1_5x": 70,
+          "level2_0x": 100
+        },
+        "withoutSpouse": {
+          "noneOrNotQualified": 0,
+          "level1_3x": 50,
+          "level1_5x": 70,
+          "level2_0x": 100
+        },
+        "rules": [
+          "A qualifying offer must be genuine, meet other current Express Entry conditions, and be in an occupation on the official high-wage occupation list.",
+          "LMIA is not required solely for the job offer to qualify under the November 3, 2026 rules.",
+          "Old 50/200 arranged-employment CRS points outside Labour Market Integration are not additive."
+        ]
+      },
+      "highWageOccupationLevels": {
+        "level1_3x": {
+          "minimumMedianWageRatio": 1.3,
+          "maximumMedianWageRatioExclusive": 1.5
+        },
+        "level1_5x": {
+          "minimumMedianWageRatio": 1.5,
+          "maximumMedianWageRatioExclusive": 2.0
+        },
+        "level2_0x": {
+          "minimumMedianWageRatio": 2.0,
+          "maximumMedianWageRatioExclusive": null
+        },
+        "classificationBasis": "Official NOC list, not applicant wages",
+        "classificationAsOfInvitation": "Use the published level as it stood on the ITA date",
+        "officialOccupationListURL": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html"
+      }
+    }
+  },
+  "languageTestConversions": {
+    "meaning": "Each numeric value is the minimum raw score needed for the indicated CLB/NCLC benchmark in the given ability; compare against highest satisfied tier. Keys 10Plus represent benchmark 10 or higher. below4 is null because no official numeric cutoff is provided.",
+    "IELTSGeneralTraining": {
+      "language": "English",
+      "benchmark": "CLB",
+      "scoreScale": "IELTS General Training band score",
+      "minimumScoresByAbility": {
+        "speaking": {
+          "below4": null,
+          "4": 4.0,
+          "5": 5.0,
+          "6": 5.5,
+          "7": 6.0,
+          "8": 6.5,
+          "9": 7.0,
+          "10Plus": 7.5
+        },
+        "listening": {
+          "below4": null,
+          "4": 4.5,
+          "5": 5.0,
+          "6": 5.5,
+          "7": 6.0,
+          "8": 7.5,
+          "9": 8.0,
+          "10Plus": 8.5
+        },
+        "reading": {
+          "below4": null,
+          "4": 3.5,
+          "5": 4.0,
+          "6": 5.0,
+          "7": 6.0,
+          "8": 6.5,
+          "9": 7.0,
+          "10Plus": 8.0
+        },
+        "writing": {
+          "below4": null,
+          "4": 4.0,
+          "5": 5.0,
+          "6": 5.5,
+          "7": 6.0,
+          "8": 6.5,
+          "9": 7.0,
+          "10Plus": 7.5
+        }
+      },
+      "note": "IELTS One Skill Retake is not accepted for Express Entry."
+    },
+    "CELPIPGeneral": {
+      "language": "English",
+      "benchmark": "CLB",
+      "scoreScale": "CELPIP-General per-ability level",
+      "minimumScoresByAbility": {
+        "speaking": {
+          "below4": null,
+          "4": 4,
+          "5": 5,
+          "6": 6,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10Plus": 10
+        },
+        "listening": {
+          "below4": null,
+          "4": 4,
+          "5": 5,
+          "6": 6,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10Plus": 10
+        },
+        "reading": {
+          "below4": null,
+          "4": 4,
+          "5": 5,
+          "6": 6,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10Plus": 10
+        },
+        "writing": {
+          "below4": null,
+          "4": 4,
+          "5": 5,
+          "6": 6,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10Plus": 10
+        }
+      }
+    },
+    "TEFCanada": {
+      "language": "French",
+      "benchmark": "NCLC",
+      "scoreScale": "Équivalence ancien score (previous score equivalency); NOT Score / 699",
+      "minimumScoresByAbility": {
+        "speaking": {
+          "below4": null,
+          "4": 181,
+          "5": 226,
+          "6": 271,
+          "7": 310,
+          "8": 349,
+          "9": 371,
+          "10Plus": 393
+        },
+        "listening": {
+          "below4": null,
+          "4": 145,
+          "5": 181,
+          "6": 217,
+          "7": 249,
+          "8": 280,
+          "9": 298,
+          "10Plus": 316
+        },
+        "reading": {
+          "below4": null,
+          "4": 121,
+          "5": 151,
+          "6": 181,
+          "7": 207,
+          "8": 233,
+          "9": 248,
+          "10Plus": 263
+        },
+        "writing": {
+          "below4": null,
+          "4": 181,
+          "5": 226,
+          "6": 271,
+          "7": 310,
+          "8": 349,
+          "9": 371,
+          "10Plus": 393
+        }
+      },
+      "note": "Use the equivalent previous score column in the official test results, not the Score / 699 column. IRCC notes a past conversion correction for tests taken Dec 11, 2023–May 6, 2024."
+    },
+    "TCFCanada": {
+      "language": "French",
+      "benchmark": "NCLC",
+      "scoreScale": "TCF Canada per-ability score (speaking/writing levels; listening/reading scaled scores)",
+      "minimumScoresByAbility": {
+        "speaking": {
+          "below4": null,
+          "4": 4,
+          "5": 6,
+          "6": 7,
+          "7": 10,
+          "8": 12,
+          "9": 14,
+          "10Plus": 16
+        },
+        "listening": {
+          "below4": null,
+          "4": 331,
+          "5": 369,
+          "6": 398,
+          "7": 458,
+          "8": 503,
+          "9": 523,
+          "10Plus": 549
+        },
+        "reading": {
+          "below4": null,
+          "4": 342,
+          "5": 375,
+          "6": 406,
+          "7": 453,
+          "8": 499,
+          "9": 524,
+          "10Plus": 549
+        },
+        "writing": {
+          "below4": null,
+          "4": 4,
+          "5": 6,
+          "6": 7,
+          "7": 10,
+          "8": 12,
+          "9": 14,
+          "10Plus": 16
+        }
+      }
+    }
+  },
+  "spouseFactors": {
+    "maximum": {
+      "withSpouse": 40,
+      "withoutSpouse": 0
+    },
+    "spouseEducation": {
+      "maximum": {
+        "withSpouse": 10,
+        "withoutSpouse": 0
+      },
+      "withSpouse": {
+        "lessThanSecondary": 0,
+        "secondaryDiploma": 2,
+        "oneYearPostsecondary": 6,
+        "twoYearPostsecondary": 7,
+        "bachelorsOrThreePlusYears": 8,
+        "twoOrMoreCredentialsOneThreePlusYears": 9,
+        "mastersOrEligibleProfessionalDegree": 10,
+        "doctoralDegree": 10
+      },
+      "withoutSpouse": null,
+      "withoutSpouseApplicable": false
+    },
+    "spouseFirstLanguage": {
+      "scoringBasis": "perAbility",
+      "abilities": [
+        "speaking",
+        "listening",
+        "reading",
+        "writing"
+      ],
+      "maximumPerAbility": {
+        "withSpouse": 5,
+        "withoutSpouse": 0
+      },
+      "maximumTotal": {
+        "withSpouse": 20,
+        "withoutSpouse": 0
+      },
+      "withSpouse": {
+        "4OrBelow": 0,
+        "5To6": 1,
+        "7To8": 3,
+        "9Plus": 5
+      },
+      "withoutSpouse": null,
+      "withoutSpouseApplicable": false
+    },
+    "spouseCanadianWorkExperience": {
+      "maximum": {
+        "withSpouse": 10,
+        "withoutSpouse": 0
+      },
+      "withSpouse": {
+        "lessThan1Year": 0,
+        "1Year": 5,
+        "2Years": 7,
+        "3Years": 8,
+        "4Years": 9,
+        "5PlusYears": 10
+      },
+      "withoutSpouse": null,
+      "withoutSpouseApplicable": false
+    }
+  },
+  "skillTransferability": {
+    "maximum": 100,
+    "groupCaps": {
+      "educationRelatedCombined": 50,
+      "foreignWorkRelatedCombined": 50,
+      "certificateOfQualification": 50,
+      "sectionTotal": 100
+    },
+    "calculation": "min(100, min(50, educationPlusLanguage + educationPlusCanadianWork) + min(50, foreignWorkPlusLanguage + foreignWorkPlusCanadianWork) + certificatePlusLanguage)",
+    "languageTierDefinitions": {
+      "clb7AllSomeBelow9": "CLB/NCLC 7 or more in all four first-language abilities, with at least one below 9.",
+      "clb9All": "CLB/NCLC 9 or more in all four first-language abilities.",
+      "clb5AllSomeBelow7": "CLB/NCLC 5 or more in all four first-language abilities, with at least one below 7.",
+      "clb7All": "CLB/NCLC 7 or more in all four first-language abilities."
+    },
+    "educationPlusLanguage": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "clb7AllSomeBelow9",
+        "clb9All"
+      ],
+      "pointsByEducationLevel": {
+        "secondaryOrLess": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 0,
+          "clb9All": 0
+        },
+        "postsecondaryOneYearOrLonger": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 13,
+          "clb9All": 25
+        },
+        "twoOrMoreCredentialsOneThreePlusYears": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        },
+        "mastersOrEligibleProfessionalDegree": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        },
+        "doctoralDegree": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        }
+      }
+    },
+    "educationPlusCanadianWork": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "1Year",
+        "2PlusYears"
+      ],
+      "pointsByEducationLevel": {
+        "secondaryOrLess": {
+          "notQualified": 0,
+          "1Year": 0,
+          "2PlusYears": 0
+        },
+        "postsecondaryOneYearOrLonger": {
+          "notQualified": 0,
+          "1Year": 13,
+          "2PlusYears": 25
+        },
+        "twoOrMoreCredentialsOneThreePlusYears": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        },
+        "mastersOrEligibleProfessionalDegree": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        },
+        "doctoralDegree": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        }
+      }
+    },
+    "foreignWorkPlusLanguage": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "clb7AllSomeBelow9",
+        "clb9All"
+      ],
+      "pointsByForeignWorkYears": {
+        "none": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 0,
+          "clb9All": 0
+        },
+        "1To2Years": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 13,
+          "clb9All": 25
+        },
+        "3PlusYears": {
+          "notQualified": 0,
+          "clb7AllSomeBelow9": 25,
+          "clb9All": 50
+        }
+      }
+    },
+    "foreignWorkPlusCanadianWork": {
+      "maximumPerCombination": 50,
+      "tiers": [
+        "1Year",
+        "2PlusYears"
+      ],
+      "pointsByForeignWorkYears": {
+        "none": {
+          "notQualified": 0,
+          "1Year": 0,
+          "2PlusYears": 0
+        },
+        "1To2Years": {
+          "notQualified": 0,
+          "1Year": 13,
+          "2PlusYears": 25
+        },
+        "3PlusYears": {
+          "notQualified": 0,
+          "1Year": 25,
+          "2PlusYears": 50
+        }
+      }
+    },
+    "certificateOfQualificationPlusLanguage": {
+      "maximumPerCombination": 50,
+      "requiresValidCanadianTradeCertificate": true,
+      "tiers": [
+        "clb5AllSomeBelow7",
+        "clb7All"
+      ],
+      "points": {
+        "noValidCertificateOrBelowCLB5Any": 0,
+        "clb5AllSomeBelow7": 25,
+        "clb7All": 50
+      }
+    },
+    "spouseStatusEffect": "none; the point tables are the same withSpouse and withoutSpouse"
+  },
+  "additionalPoints": {
+    "maximum": 600,
+    "provincialNomination": {
+      "validAndAccepted": 600,
+      "none": 0
+    },
+    "canadianEducationCredential": {
+      "maximum": 30,
+      "noneOrNotEligible": 0,
+      "secondarySchoolOnly": 0,
+      "eligibleOneOrTwoYearPostsecondary": 15,
+      "eligibleThreePlusYearPostsecondary": 30,
+      "eligibleMastersOrEntryToPracticeProfessionalDegree": 30,
+      "eligibleDoctoralDegree": 30,
+      "note": "Only highest eligible Canadian credential; statutory criteria and exceptions apply (including study location, duration, presence, and certain distance-learning/exceptions)."
+    },
+    "siblingInCanada": {
+      "qualifyingSibling": 15,
+      "none": 0,
+      "minimumAge": 18,
+      "citizenshipStatus": [
+        "Canadian citizen",
+        "Permanent resident"
+      ],
+      "residence": "living in Canada",
+      "note": "Qualifying sibling may belong to the principal applicant or accompanying spouse/common-law partner."
+    },
+    "frenchLanguage": {
+      "maximum": 50,
+      "frenchNCLC7OrHigherAllFour": 25,
+      "additionalIfEnglishCLB5OrHigherAllFour": 25,
+      "totalIfFrenchNCLC7AllAndEnglishCLB5All": 50,
+      "totalIfFrenchNCLC7AllAndNoEnglishOrBelowCLB5InAtLeastOne": 25,
+      "otherwise": 0,
+      "note": "Two additive 25-point components under section 32 of current ministerial instructions."
+    }
+  },
+  "unverified": [
+    {
+      "paths": [
+        "languageTestConversions.IELTSGeneralTraining.minimumScoresByAbility.speaking.below4",
+        "languageTestConversions.IELTSGeneralTraining.minimumScoresByAbility.listening.below4",
+        "languageTestConversions.IELTSGeneralTraining.minimumScoresByAbility.reading.below4",
+        "languageTestConversions.IELTSGeneralTraining.minimumScoresByAbility.writing.below4"
+      ],
+      "value": null,
+      "reason": "The IRCC Express Entry language-test grids give thresholds from benchmark 4 upward, but do not specify a numerical minimum raw test score for below benchmark 4."
+    },
+    {
+      "paths": [
+        "languageTestConversions.CELPIPGeneral.minimumScoresByAbility.speaking.below4",
+        "languageTestConversions.CELPIPGeneral.minimumScoresByAbility.listening.below4",
+        "languageTestConversions.CELPIPGeneral.minimumScoresByAbility.reading.below4",
+        "languageTestConversions.CELPIPGeneral.minimumScoresByAbility.writing.below4"
+      ],
+      "value": null,
+      "reason": "The IRCC Express Entry language-test grids give thresholds from benchmark 4 upward, but do not specify a numerical minimum raw test score for below benchmark 4."
+    },
+    {
+      "paths": [
+        "languageTestConversions.TEFCanada.minimumScoresByAbility.speaking.below4",
+        "languageTestConversions.TEFCanada.minimumScoresByAbility.listening.below4",
+        "languageTestConversions.TEFCanada.minimumScoresByAbility.reading.below4",
+        "languageTestConversions.TEFCanada.minimumScoresByAbility.writing.below4"
+      ],
+      "value": null,
+      "reason": "The IRCC Express Entry language-test grids give thresholds from benchmark 4 upward, but do not specify a numerical minimum raw test score for below benchmark 4."
+    },
+    {
+      "paths": [
+        "languageTestConversions.TCFCanada.minimumScoresByAbility.speaking.below4",
+        "languageTestConversions.TCFCanada.minimumScoresByAbility.listening.below4",
+        "languageTestConversions.TCFCanada.minimumScoresByAbility.reading.below4",
+        "languageTestConversions.TCFCanada.minimumScoresByAbility.writing.below4"
+      ],
+      "value": null,
+      "reason": "The IRCC Express Entry language-test grids give thresholds from benchmark 4 upward, but do not specify a numerical minimum raw test score for below benchmark 4."
+    }
+  ]
+}
