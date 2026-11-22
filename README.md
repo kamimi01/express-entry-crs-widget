@@ -44,6 +44,10 @@ The included profile is fictional. A cut-off comparison does not establish eligi
 
 The reference script uses its own limited scoring logic. It does not load the CRS tables JSON or provide an in-app profile editor.
 
+The direct route is a reference version with three fixed improvement scenarios: a language target, one more year of Canadian work, and a provincial or territorial nomination. For improvement scenarios tailored to your profile, use the AI route.
+
+The reference script needs an internet connection to fetch IRCC draw results; if the request fails, it shows an error instead of previously fetched results.
+
 ## Requirements
 
 An iPhone and the free Scriptable app.

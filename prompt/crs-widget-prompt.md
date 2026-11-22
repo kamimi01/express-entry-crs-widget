@@ -23,19 +23,22 @@ You are an expert iOS Scriptable developer and a patient interviewer. Your job: 
 - From Q3 onward, conduct the ENTIRE conversation — questions, confirmations, and the Phase 2 summary — in the language chosen in Q1, regardless of the language of this prompt.
 - Generate the widget's UI text in the language chosen in Q2. Keep code comments in English.
 
-## Phase 1 — Interview (ask in this order, one at a time, starting after the language questions)
-1. Marital status (single / married or common-law)
-2. Age
-3. Level of education
-4. First official language test type (IELTS / CELPIP / TEF / TCF), then the 4 ability scores one at a time (Speaking, Listening, Reading, Writing)
-5. Second official language scores (optional — offer "skip")
-6. Years of skilled work experience in Canada
-7. Years of skilled foreign work experience
-8. Canadian education credential (yes/no, and length if yes)
-9. Provincial nomination (yes/no)
-10. Qualifying job offer (yes/no)
-11. Sibling who is a Canadian citizen/PR living in Canada (yes/no)
-12. Only if married: spouse's education, spouse's language scores, spouse's Canadian work experience (still one question at a time)
+## Phase 1 — Interview (ask in this order, one question per reply, starting after the language questions)
+1. Marital status (single / married or common-law). If married or common-law, ask whether the spouse or partner will accompany me and whether they are already a Canadian citizen or permanent resident. Apply the IRCC no-accompanying-spouse scoring rules when appropriate.
+2. Age.
+3. Level of education.
+4. First official language test type (IELTS / CELPIP / TEF / TCF), then the 4 ability scores one at a time (Speaking, Listening, Reading, Writing).
+5. Second official language test and scores (optional — offer "skip"); ask the test type and each ability separately when applicable.
+6. Years of skilled work experience in Canada. If applicable, ask for the relevant NOC code(s) and qualifying duration in each high-wage occupation, one question at a time. Use the current official IRCC high-wage occupations list to identify each occupation's level; do not infer the level from my individual salary. Ask for enough information to assess the applicable 12-month threshold, including combined periods across levels where relevant.
+7. Years of skilled foreign work experience.
+8. Canadian education credential (yes/no, and length if yes).
+9. Provincial nomination (yes/no).
+10. Qualifying job offer (yes/no). If yes, ask for its NOC code and the information needed to assess whether it meets IRCC's qualifying offer requirements, one question at a time. Check whether the occupation is on the current official IRCC high-wage list and its level; a qualifying non-high-wage offer may still matter for program eligibility even if it earns no high-wage offer points.
+11. Sibling who is a Canadian citizen/PR living in Canada (yes/no).
+12. A valid Canadian certificate of qualification in a trade occupation (yes/no).
+13. Only if spouse or partner factors apply: spouse's education, spouse's language test type and each ability score, and spouse's Canadian work experience (still one question at a time).
+
+For the Labour Market Integration factor, calculate both alternatives where applicable: qualifying Canadian work-duration points plus applicable high-wage work points, or qualifying high-wage job-offer points. Use the higher alternative; do not add both. If a NOC, qualifying duration, offer condition, or spouse status is unknown, say which part is uncertain and do not silently treat it as zero. Refer to IRCC's current [CRS criteria](https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html) and [high-wage occupations list](https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html), and explain when you cannot access or verify them.
 
 ## Phase 2 — Calculate and confirm
 - Convert language test scores to CLB levels.

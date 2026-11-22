@@ -423,8 +423,11 @@ function crsFrom(p) {
     language +
     labour +
     transfer +
-    Number(p.CANADIAN_EDUCATION_POINTS) +
-    Number(p.OTHER_ADDITIONAL_POINTS)
+    Math.min(
+      600,
+      Number(p.CANADIAN_EDUCATION_POINTS) +
+        Number(p.OTHER_ADDITIONAL_POINTS)
+    )
   );
 }
 
@@ -469,16 +472,7 @@ function personalStatus() {
 
   const current = crsFrom(baseline);
 
-  // Speaking improvement
-  const speaking = {
-    ...baseline,
-    CELPIP: {
-      ...MY.CELPIP,
-      S: Math.max(MY.CELPIP.S, required)
-    }
-  };
-
-  // CLB 10 goal
+  // Raise each language ability to at least the configured goal.
   const goal = {
     ...baseline,
     CELPIP: Object.fromEntries(
@@ -492,13 +486,16 @@ function personalStatus() {
     )
   };
 
-  // One year of Canadian work
+  // Model one additional year of qualifying Canadian work.
   const year = {
     ...baseline,
-    CANADIAN_WORK_YEARS: Math.max(
-      1,
-      MY.CANADIAN_WORK_YEARS
-    )
+    CANADIAN_WORK_YEARS: Number(MY.CANADIAN_WORK_YEARS) + 1
+  };
+
+  // The additional-points cap prevents an existing nomination being counted twice.
+  const nomination = {
+    ...baseline,
+    OTHER_ADDITIONAL_POINTS: Number(MY.OTHER_ADDITIONAL_POINTS) + 600
   };
 
   return {
@@ -515,9 +512,9 @@ function personalStatus() {
     expired,
     required,
 
-    speakingGain: crsFrom(speaking) - current,
     goalGain: crsFrom(goal) - current,
-    workGain: crsFrom(year) - current
+    workGain: crsFrom(year) - current,
+    nominationGain: crsFrom(nomination) - current
   };
 }
 
@@ -1025,62 +1022,24 @@ function mediumWidget(data) {
 
   right.addSpacer(7);
 
-  // ============================================
-  // IMPROVEMENT 1 — SPEAKING
-  // ============================================
-
-  const speakingName = mine.missingSpeaking
-    ? `Speak ${MY.CELPIP.S} to ${mine.required}`
-    : (
-        mine.missingLanguage
-          ? "Language gap"
-          : "Speaking OK"
-      );
-
-  improvementRow(
-    right,
-    speakingName,
-    mine.speakingGain
-  );
-
-  // Divider
-  right.addSpacer(4);
-  improvementDivider(right);
-  right.addSpacer(4);
-
-  // ============================================
-  // IMPROVEMENT 2 — CLB 10
-  // ============================================
-
+  // Hypothetical improvements are calculated independently.
   improvementRow(
     right,
     `All CLB${MY.LANGUAGE_TARGET_CLB}`,
     mine.goalGain
   );
 
-  // Divider
   right.addSpacer(4);
   improvementDivider(right);
   right.addSpacer(4);
 
-  // ============================================
-  // IMPROVEMENT 3 — CANADIAN WORK
-  // ============================================
+  improvementRow(right, "CA work +1 yr", mine.workGain);
 
-  const workName =
-    MY.CANADIAN_WORK_YEARS < 1
-      ? "CA work 0 to 1y"
-      : (
-          mine.missingWork
-            ? "Verify CA work"
-            : "CA work OK"
-        );
+  right.addSpacer(4);
+  improvementDivider(right);
+  right.addSpacer(4);
 
-  improvementRow(
-    right,
-    workName,
-    mine.workGain
-  );
+  improvementRow(right, "Nomination", mine.nominationGain);
 
   if (mine.expired) {
     right.addSpacer(3);
@@ -1217,9 +1176,8 @@ function smallWidget(data) {
 
   text(
     w,
-    `Speak +${mine.speakingGain} · ` +
     `CLB${MY.LANGUAGE_TARGET_CLB} +${mine.goalGain} · ` +
-    `Work +${mine.workGain}`,
+    `Work +${mine.workGain} · PNP +${mine.nominationGain}`,
     7.8,
     C.muted,
     false,
