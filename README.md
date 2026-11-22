@@ -22,6 +22,16 @@ The included profile is fictional. A cut-off comparison does not establish eligi
 
 ## Two ways to use it
 
+| | A. AI route | B. Direct route |
+| --- | --- | --- |
+| Best for | ✅ People who want to answer questions and create a personalized widget. | ✅ People who want to edit the code and get started quickly. |
+| Get started | Answer an AI interview and paste the generated script into Scriptable. | Copy the reference script into Scriptable and edit its `MY` section. |
+| Profile | The AI creates a script for your answers; the prompt requests an in-app profile editor. | Edit the code yourself; there is no in-app profile editor. |
+| CRS calculation | The prompt asks the AI to use the supplied tables and account for your profile. Check the generated result and assumptions with IRCC. | Uses the CRS tables with limited calculation logic. It assumes no accompanying spouse and uses CELPIP. |
+| Improvement scenarios | The prompt asks for scenarios tailored to your profile. | Shows three fixed scenarios: language target, Canadian work, and nomination. |
+| CRS table data | Attach the JSON or provide an accessible raw URL; the prompt requests an embedded fallback. | Fetches the JSON at startup and uses embedded tables if fetching fails. |
+
+
 ### A. AI route
 
 1. Copy [the interview prompt](prompt/crs-widget-prompt.md) into ChatGPT, Claude, or Gemini.
@@ -42,7 +52,7 @@ The included profile is fictional. A cut-off comparison does not establish eligi
 1. Copy [the reference script](script/crs-widget.js) into Scriptable.
 2. Edit the `MY` profile in the code. See [setup](docs/setup.md).
 
-The reference script uses its own limited scoring logic. It does not load the CRS tables JSON or provide an in-app profile editor.
+The reference script uses its own limited scoring logic with the CRS tables JSON. It does not provide an in-app profile editor.
 
 The direct route is a reference version with three fixed improvement scenarios: a language target, one more year of Canadian work, and a provincial or territorial nomination. For improvement scenarios tailored to your profile, use the AI route.
 

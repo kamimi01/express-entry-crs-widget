@@ -16,7 +16,8 @@
 
 The reference script:
 
-- Does not have an in-app profile editor, fetch the CRS tables, or cache draw data.
+- Fetches the CRS tables at startup and uses embedded tables if fetching fails.
+- Does not have an in-app profile editor or cache draw data.
 - Assumes no accompanying spouse and CELPIP for its calculation.
 - Requires additional and high-wage points to be entered manually.
 

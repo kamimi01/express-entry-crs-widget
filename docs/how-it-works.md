@@ -23,7 +23,8 @@ Edit the script's `MY` section directly. The reference script:
 - Uses built-in calculation logic.
 - Assumes no accompanying spouse and CELPIP.
 - Requires manual additional and high-wage points.
-- Does not fetch the CRS tables or cache draw results.
+- Fetches the CRS tables at startup and uses embedded tables if fetching fails.
+- Does not cache draw results.
 - Fetches IRCC's official rounds JSON used by the [Rounds of Invitations](https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations.html) page.
 
 ## CRS overview
@@ -46,4 +47,4 @@ The job-offer branch competes with the Canadian work and high-wage work branch; 
 
 These tables were prepared from official IRCC sources by a non-professional. Readers must verify their score and eligibility with IRCC.
 
-Updating the JSON does not update the reference script's hard-coded rules or an already generated widget's embedded fallback. Changes to scoring logic, schema, or profile inputs can also require code changes.
+Updating the JSON does not update the reference script's calculation logic or the embedded fallback in either the reference script or an already generated widget. Changes to scoring logic, schema, or profile inputs can also require code changes.
