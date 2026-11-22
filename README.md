@@ -29,13 +29,13 @@ The included profile is fictional. A cut-off comparison does not establish eligi
 | Profile | The AI creates a script for your answers; the prompt requests an in-app profile editor. | Edit the code yourself; there is no in-app profile editor. |
 | CRS calculation | The prompt asks the AI to use the supplied tables and account for your profile. Check the generated result and assumptions with IRCC. | Uses the CRS tables with limited calculation logic. It assumes no accompanying spouse and uses CELPIP. |
 | Improvement scenarios | The prompt asks for scenarios tailored to your profile. | Shows three fixed scenarios: language target, Canadian work, and nomination. |
-| CRS table data | Attach the JSON or provide an accessible raw URL; the prompt requests an embedded fallback. | Fetches the JSON at startup and uses embedded tables if fetching fails. |
+| CRS table data | The prompt links to the JSON; attach it if the AI cannot open the link. It requests an embedded fallback. | Fetches the JSON at startup and uses embedded tables if fetching fails. |
 
 
 ### A. AI route
 
 1. Copy [the interview prompt](prompt/crs-widget-prompt.md) into ChatGPT, Claude, or Gemini.
-2. Attach [the CRS tables](data/crs-tables.json) and [the reference script](script/crs-widget.js). Alternatively, provide accessible raw file URLs. A repository link or relative path alone may not be readable by the AI.
+2. The prompt links to the CRS tables. If your AI cannot access the link, attach [the CRS tables](data/crs-tables.json). Attach [the reference script](script/crs-widget.js) or provide an accessible raw URL if the AI needs it for fallback logic.
 3. Optionally attach a design screenshot. Answer the questions and confirm your profile.
 4. Paste the generated script into Scriptable.
 5. Check the estimate and its assumptions against current official IRCC information.
@@ -45,7 +45,7 @@ The included profile is fictional. A cut-off comparison does not establish eligi
 - The JSON tables are the first source for calculations. The reference script's calculation logic is a limited fallback.
 - The reference script assumes no accompanying spouse and uses CELPIP. It does not cover every profile or CRS factor.
 - If the JSON is unavailable or incomplete, the AI must identify factors the script cannot handle as unknown or uncertain. It must not assume zero or present an incomplete estimate as a complete score.
-- A generated widget can use an accessible raw JSON URL with an embedded offline fallback. Without a URL, it must rely on embedded data.
+- The prompt requests that a generated widget fetch the linked JSON and use an embedded offline fallback based on tables the AI has actually read.
 
 ### B. Direct route
 

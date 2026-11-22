@@ -3,7 +3,7 @@
 ## AI-generated widget
 
 1. Copy [the interview prompt](../prompt/crs-widget-prompt.md) into your AI assistant.
-2. Attach [the CRS tables](../data/crs-tables.json) and [the reference script](../script/crs-widget.js), or provide accessible raw URLs. Optionally attach a screenshot as a design reference.
+2. The prompt links to the CRS tables. If your AI cannot access the link, attach [the CRS tables](../data/crs-tables.json). Attach [the reference script](../script/crs-widget.js) or provide an accessible raw URL if needed for fallback logic. Optionally attach a screenshot as a design reference.
 3. Answer the interview and confirm the summary. Check the estimated score and assumptions against IRCC.
 4. Install the free Scriptable app from the App Store. Create a script and paste the complete generated code into it.
 5. Run the script once in the app. Add a Scriptable widget to your home screen, then long-press it, choose Edit Widget, and select the script.
